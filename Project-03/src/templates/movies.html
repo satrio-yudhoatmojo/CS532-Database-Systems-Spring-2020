@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Movies</title>
+</head>
+<body>
+    <label for="years">Choose year:</label>
+
+    <select id="years">
+        {% for year in years %}
+        <option value="{{ year }}">{{ year }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="genres">Choose genres:</label>
+
+    <select id="genres">
+        {% for genre in genres %}
+        <option value="{{ genre }}">{{ genre }}</option>
+        {% endfor %}
+    </select>
+
+    <select id="ratings">
+        {% for rating in ratings %}
+        <option value="{{ rating }}">{{ rating }}</option>
+        {% endfor %}
+    </select>
+
+    {% for movie in movies %}
+    <p>{{ movie['movie_title'] }}</p>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/movies_on_genres" method="post">
+        <select id="years" name="years">
+        {% for year in years %}
+        <option value="{{ year }}">{{ year }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="genres">Choose genres:</label>
+
+    <select id="genres" name="genres">
+        {% for genre in genres %}
+        <option value="{{ genre }}">{{ genre }}</option>
+        {% endfor %}
+    </select>
+
+    <input type="submit" value="Submit"/>
+    </form>
+
+
+    {% if data %}
+        {% for movie in data %}
+            <p>{{ movie }}</p>
+        {% endfor %}
+    {% endif %}
+
+</body>
+</html>
