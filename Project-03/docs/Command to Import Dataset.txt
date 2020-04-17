@@ -1,0 +1,1 @@
+mongoimport --type csv -d (DB Name) -c (Collection Name) --headerline --drop (Filename/path to File)
