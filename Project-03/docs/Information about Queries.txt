@@ -1,36 +1,36 @@
 Information about each and every query (What output we are gonna show):
 
-1.
+1. List of movies yearly: -> Basic Query
+List the movies in a table. We will give the drop down for the user to select the year.
+So he will be able to see the list of movies released in that year from our dataset.
+--------------
+2. List of movies based on genre -> Basic Query
+Here we will list the movies based on the genre. So there will 2 drop downs for the user.
+1. Select the year -> Movies to list from this year.
+2. Select the genre -> Movies of the selected year filtered by the selected genre
+--------------
+3. List of actors and the number of movies starred by the actor -> Basic Query
+Here we will list the movies based on the Actors.
+1. Select the Actor -> list the movies from any year in which the actor is present might be at any place, like actor_1, actor_2
+actor_3
+--------------
+4.Visualizing the top 10 movie genre on each year -> Sophisticated Query
+Showing the chart or the bar graph for movies based on the genre for each year. The top 10 movies will be decided on the basis of the IMDB ratings.
+1. Select the year -> Here the user selects the year for which he needs to see the top 10 movies and their genre. 
+--------------
+5. Correlation analysis between movie rating and movie revenue -> Sophisticated Query
 
 
+--------------
+6. Number of profit-loss movie revenue in each year -> Sophisticated Query
+Here we will showing the visualization based on both movie's revenue and movie budget.
+--------------
+7. Movies to watch based on ratings -> Basic Query
+List the top 5 - 10 movies for the year selected by the user.
+--------------
+8. Actor’s popularity on each movie -> Sophisticated Query
 
-2.
-
-
-
-3.
-
-
-
-
-4.
-
-
+--------------
+9. Relationship network analysis between actors -> Sophisticated Query
 
 
-5.
-
-
-
-
-6.
-
-
-
-
-7.
-
-
-
-
-8.
