@@ -1,0 +1,373 @@
+     * {
+	-webkit-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	box-sizing: border-box;
+}
+
+*:after, *:before {
+	box-sizing: border-box;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    /* Fix for webkit rendering */
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+    transition: all 450ms ease-in-out 0s;
+    -webkit-transition: all 450ms ease-in-out 0s;
+    -moz-transition: all 450ms ease-in-out 0s;
+}
+
+a:hover {
+    outline: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+    display: block;
+}
+
+/*clearfix to clear float */
+
+.clearfix:before,
+.clearfix:after {
+    content: '';
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*common class*/
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.text-lighter {
+    font-weight: 300;
+}
+
+.section-outer {
+    padding: 88px 0;
+    border-bottom: 1px solid #A4A4A4;
+}
+
+.section-heading {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 29px;
+    color: #000;
+    margin: 0 0 20px 0;
+}
+
+.section-intro {
+	width: 60%;
+	margin: 0 auto 40px auto;
+    font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+}
+
+.no-border {
+    border: none;
+}
+
+.margin-10 {
+	margin: 10px 0;	
+}
+
+.margin-0 {
+	margin: 0;
+}
+
+.no-padding {
+	padding: 0;	
+}
+
+ul.social-icons-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.social-icons-list li{
+	display: inline-block;
+	margin: 0 0 20px 10px;
+}	
+
+.container {
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 15px;
+}
+
+.center-block{
+    margin: 0 auto;	
+}
+
+.inline-block {
+    display: inline-block;   		
+}
+
+.nav-btn {
+	background: #f44336;
+	color: #fff!important;
+	padding: 10px 20px!important;
+	margin: 5px!important;
+	border-radius: 5px;
+	box-shadow: 2px 2px 10px 2px #cccccc;
+}
+
+a.nav-btn:hover {
+	background: #880E4F!important;	
+}
+/* main-header */
+.main-header{
+	
+}
+
+.navbar{ 
+	border-radius: 0;
+	font-family: "Raleway",sans-serif;
+	padding: 9px 0;
+}
+
+.navbar .navbar-header a {
+	font-size: 40px;
+	font-weight: 800;
+	color: #000;
+	font-family: 'Aladin', cursive;
+}
+
+.navbar .navbar-brand:hover  {
+	border: none!important;
+}
+
+.navbar ul li {
+	margin: 0 0 0 10px;	
+}
+
+.navbar ul li a{
+	color: #000;	
+	font-size: 13px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.navbar ul li a.nav-link:hover, .navbar ul li a.active {
+	color: #7cd9e1;
+	background: none!important;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #000;
+}
+.assignment-nav {
+	padding: 10px 0;
+}
+
+.small-navbar ul {
+	text-align: center;
+	margin: 0;
+	padding:0
+}
+
+.small-navbar ul li {
+	margin: 0 0 0 32px;	
+	list-style: none;
+	float: none;
+	display: inline-block;
+	text-align: center;
+}
+
+.small-navbar ul li a{
+	color: #f00;	
+	font-size: 14px;
+	padding: 2px 5px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.small-navbar ul li a:hover, .small-navbar ul li a.active {
+	color: #fff;
+	background: #880e4f!important;
+	text-decoration: none;
+	box-shadow: 2px 2px 10px 2px #cccccc;
+}
+
+ /*assignment-name section*/
+.assignment-name {
+	padding: 20px 0;
+	background: #880e4f;
+}
+
+.assignment-name h1 {
+	color: #fff;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+	font-size: 32px;
+}
+
+.assignment-name ul li{
+	color: #fff;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+	font-size: 22px;		
+}
+
+/* assignment-content section */
+
+.assignment-content h2 {
+	color: #000;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+	font-size: 28px;
+	padding: 20px 0;
+	border-bottom: 1px solid #333;
+	display: inline-block;
+}
+
+hr { 
+	margin: 0;
+}
+
+.assignment-content ul {
+	margin-top: 10px;
+}
+
+.assignment-content p {
+	color: #333;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-size: 18px;
+	margin-top: 10px;
+}
+
+.assignment-content ul li{
+	color: #333;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
+	font-size: 18px;
+	list-style: circle;
+}
+
+/* assignment-output */
+
+.assignment-output h2 {
+	color: #000;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+	font-size: 28px;
+	padding: 20px 0;
+	border-bottom: 1px solid #333;
+	display: inline-block;
+}
+/* intro-section */
+
+.welcome-section {
+	background:url(../images/slider-img.jpg) no-repeat center top;
+	background-size: cover;
+	padding: 100px 0;
+}
+
+.welcome-text p {
+	color: #fff;
+}
+
+.welcome-text h2 {
+	color: #fff;
+	font-family: 'Aladin', cursive;
+	font-size: 60px;
+	width: 50%;
+	margin: 0 auto;
+}
+
+/* assignmets-section */
+
+
+.text-outer {
+	
+}
+
+.assignmets-section {
+	padding: 40px 0 80px 0;
+}	
+
+.assignmets-section .text-outer {
+	margin: 0 0 40px 0;
+	box-shadow: 1px 1px 10px 1px #cccccc;
+	padding: 30px 10px;
+}
+
+.assignmets-section .assignment-title {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 22px;
+	text-transform: uppercase;
+	margin: 0 0 30px 0;
+}
+
+.assignmets-section .problem-stat {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	min-height: 83px;
+	margin: 0 0 30px 0;
+}
+
+.assignmets-section .assignment-link {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	border-radius: 0;
+}
+
+.assignmets-section .assignment-link:hover {
+	background: #000;
+	color: #7cd9e1;
+}
+
+
+/* footer-section */
+
+.main-footer {
+	background: #000;
+	padding: 30px 0;
+}
+
+.copyright p {
+	color: #fff;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	margin: 0;
+}
