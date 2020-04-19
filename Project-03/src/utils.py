@@ -59,7 +59,21 @@ def get_movies_on_rating_range(low_range, high_range, year):
     '''Get list of movies based on a range of ratings.'''
 
     # Querying the movies
-    movies = db.movies.find({'imdb_score': {'$gte': low_range, '$lte': high_range}, 'title_year': year}).sort({'imdb_score': -1})
+    movies = db.movies.find({"imdb_score": {"$gte": float(low_range), "$lte": float(high_range)}, "title_year": int(year)})
+
+    result = {}
+
+    for i in movies:
+        result[i['movie_title']] = {'movie_title': i['movie_title'],
+                                    'director_name': i['director_name'],
+                                    'content_rating': i['content_rating'],
+                                    'duration': i['duration'],
+                                    'language': i['language'],
+                                    'country': i['country'],
+                                    'genres': i['genres'],
+                                    'imdb_score': i['imdb_score']}
+
+    return result
 
     return movies
 

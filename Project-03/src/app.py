@@ -34,6 +34,7 @@ def show_movies():
     # Send the query result to movies.html
     return render_template("movies.html", movies=movies, years=years, genres=genres, ratings=ratings)
 
+# DONE
 @app.route('/movies_on_year', methods=['GET', 'POST'])
 def show_movies_on_year():
     '''Displays all movies in certain year.'''
@@ -54,6 +55,7 @@ def show_movies_on_year():
         # Send the list of years to query1.html
         return render_template("query1.html", years=years)
 
+# TODO: The query is not working, but it worked on python terminal
 @app.route('/movies_on_genres', methods=['GET', 'POST'])
 def show_movies_on_genres():
     '''Get a list of movies based on certain genre.'''
@@ -86,6 +88,7 @@ def show_movies_on_genres():
         # Render the page
         return render_template("movies_on_genres.html", years=years, genres=genres)
 
+# DONE
 @app.route('/actors')
 def show_actors():
     '''Displays all actors in the dataset'''
@@ -94,6 +97,26 @@ def show_actors():
     actors = utils.get_actors()
 
     return render_template("query3.html", actors=actors)
+
+@app.route('/movies_on_ratings', methods=['GET', 'POST'])
+def show_movies_on_ratings():
+    '''Display list of movies based on a range of ratings.'''
+
+    years = utils.get_year_list()
+
+    if request.method == 'POST':
+        # Get POST data
+        year = request.form.get('years')
+        lower_bound = request.form.get('lower_bound')
+        upper_bound = request.form.get('upper_bound')
+
+        # Query a list of movies on specific year within a specific range of ratings
+        data = utils.get_movies_on_rating_range(lower_bound, upper_bound, year)
+
+        return render_template("query7.html", years=years, year=year,lower_bound=lower_bound, upper_bound=upper_bound, data=data)
+    else:
+
+        return render_template("query7.html", years=years)
 
 @app.route('/movies_revenues', methods=['GET', 'POST'])
 def show_movies_revenues():
@@ -154,16 +177,7 @@ def show_top_ten_movies():
 
     return render_template("top_ten_movies.html", years=years)
 
-@app.route('/movies_on_ratings', methods=['GET', 'POST'])
-def show_movies_on_ratings():
-    '''Display list of movies based on a range of ratings.'''
 
-    if request.method == 'POST':
-        pass
-    else:
-        years = utils.get_year_list()
-
-        return render_template("movies_on_ratings.html", years=years)
 
 
 

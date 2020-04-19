@@ -78,6 +78,60 @@
 			<div>
 				<div class="assignment-content">
 					<!-- Add your stuff for the Movies here -->
+                    <div align="center">
+                        <form action="/movies_on_ratings" method="post">
+                            <label for="years">Choose movie release year:</label>
+                            <select id="years" name="years">
+                                {% for year in years %}
+                                <option value="{{ year }}">{{ year }}</option>
+                                {% endfor %}
+                            </select>
+
+                            <label for="lower_bound">Lower bound rating:</label>
+                            <input type="range" name="lower_bound" id="lower_bound" value="0" min="0" max="10" step="0.1" oninput="lower_bound_disp.value = lower_bound.value">
+                            <output  id="lower_bound_disp"></output>
+
+                            &nbsp;
+
+                            <label for="upper_bound">Upper bound rating:</label>
+                            <input type="range" name="upper_bound" id="upper_bound" value="0" min="0" max="10" step="0.1" oninput="upper_bound_disp.value = upper_bound.value">
+                            <output  id="upper_bound_disp"></output>
+
+                            <input type="submit" value="Submit"/>
+                        </form>
+                    </div>
+                    {% if year %}
+                        <br />
+                        <h3 align="center">List of Movies in Year {{ year }}</h3>
+                        <h3 align="center">with Rating between {{ lower_bound }} and {{ upper_bound }}</h3>
+                        <br />
+                        <table style="width:100%">
+						  <tr>
+							<th style="text-align:center">No.</th>
+							<th style="text-align:center">Movie Title</th>
+							<th style="text-align:center">Director Name</th>
+                              <th style="text-align:center">Content Rating</th>
+                              <th style="text-align:center">Duration</th>
+                              <th style="text-align:center">Language</th>
+                              <th style="text-align:center">Country</th>
+                              <th style="text-align:center">Genres</th>
+                              <th style="text-align:center">IMDB Score</th>
+						  </tr>
+                            {% for k, v in data.items() %}
+						  <tr>
+							<td>{{ loop.index}}</td>
+							<td>{{ v['movie_title'] }}</td>
+							<td>{{ v['director_name'] }}</td>
+                              <td>{{ v['content_rating'] }}</td>
+                              <td>{{ v['duration'] }}</td>
+                              <td>{{ v['language'] }}</td>
+                              <td>{{ v['country'] }}</td>
+                              <td>{{ v['genres'] }}</td>
+                              <td>{{ v['imdb_score'] }}</td>
+						  </tr>
+                        {% endfor %}
+						</table>
+                    {% endif %}
 				</div>
 			</div>	
 		</div>
