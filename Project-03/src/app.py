@@ -55,7 +55,7 @@ def show_movies_on_year():
         # Send the list of years to query1.html
         return render_template("query1.html", years=years)
 
-# TODO: The query is not working, but it worked on python terminal
+# DONE
 @app.route('/movies_on_genres', methods=['GET', 'POST'])
 def show_movies_on_genres():
     '''Get a list of movies based on certain genre.'''
@@ -71,13 +71,11 @@ def show_movies_on_genres():
         # Get POST data
         year = request.form.get('years')
         genre = request.form.get('genres')
-        print(year)
-        print(genre)
 
         data = utils.get_movies_on_genres(genre, year)
 
         # Render the page
-        return render_template("movies_on_genres.html", years=years, genres=genres, data=data)
+        return render_template("query2.html", year=year, genre=genre, years=years, genres=genres, data=data)
 
     else:
         '''
@@ -86,7 +84,7 @@ def show_movies_on_genres():
         '''
 
         # Render the page
-        return render_template("movies_on_genres.html", years=years, genres=genres)
+        return render_template("query2.html", years=years, genres=genres)
 
 # DONE
 @app.route('/actors')
@@ -98,6 +96,7 @@ def show_actors():
 
     return render_template("query3.html", actors=actors)
 
+# DONE
 @app.route('/movies_on_ratings', methods=['GET', 'POST'])
 def show_movies_on_ratings():
     '''Display list of movies based on a range of ratings.'''

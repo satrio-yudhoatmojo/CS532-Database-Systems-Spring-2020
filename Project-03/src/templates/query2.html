@@ -104,6 +104,37 @@ table, th, td {
                             <input type="submit" value="Submit"/>
                         </form>
                     </div>
+                {% if year %}
+                    <br />
+                    <h3 align="center">List of Movies in Year {{ year }} with the Genre of {{ genre }}</h3>
+                    <br />
+                    <table style="width:100%">
+                      <tr>
+                        <th style="text-align:center">No.</th>
+                        <th style="text-align:center">Movie Title</th>
+                        <th style="text-align:center">Director Name</th>
+                          <th style="text-align:center">Content Rating</th>
+                          <th style="text-align:center">Duration</th>
+                          <th style="text-align:center">Language</th>
+                          <th style="text-align:center">Country</th>
+                          <th style="text-align:center">Genres</th>
+                          <th style="text-align:center">IMDB Score</th>
+                      </tr>
+                        {% for k, v in data.items() %}
+                      <tr>
+                        <td>{{ loop.index}}</td>
+                        <td>{{ v['movie_title'] }}</td>
+                        <td>{{ v['director_name'] }}</td>
+                          <td>{{ v['content_rating'] }}</td>
+                          <td>{{ v['duration'] }}</td>
+                          <td>{{ v['language'] }}</td>
+                          <td>{{ v['country'] }}</td>
+                          <td>{{ v['genres'] }}</td>
+                          <td>{{ v['imdb_score'] }}</td>
+                      </tr>
+                    {% endfor %}
+                    </table>
+                {% endif %}
 				</div>
 			</div>	
 		</div>

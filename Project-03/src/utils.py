@@ -55,28 +55,6 @@ def enumerate_rating_range():
 
     return ratings
 
-def get_movies_on_rating_range(low_range, high_range, year):
-    '''Get list of movies based on a range of ratings.'''
-
-    # Querying the movies
-    movies = db.movies.find({"imdb_score": {"$gte": float(low_range), "$lte": float(high_range)}, "title_year": int(year)})
-
-    result = {}
-
-    for i in movies:
-        result[i['movie_title']] = {'movie_title': i['movie_title'],
-                                    'director_name': i['director_name'],
-                                    'content_rating': i['content_rating'],
-                                    'duration': i['duration'],
-                                    'language': i['language'],
-                                    'country': i['country'],
-                                    'genres': i['genres'],
-                                    'imdb_score': i['imdb_score']}
-
-    return result
-
-    return movies
-
 def get_movies_on_year(year):
     '''Get a list of movies on a specific year.'''
 
@@ -106,11 +84,21 @@ def get_movies_on_genres(genre, year):
     print(reg_exp)
 
     # Querying the movies
-    data = db.movies.find({'genres': {'$regex': reg_exp}, 'title_year': year}, {'_id': 0, 'movie_title': 1})
+    data = db.movies.find({"genres": {"$regex": reg_exp}, "title_year": int(year)}).sort("movie_title")
 
-    print(data)
+    result = {}
+
     for i in data:
-        print(i['movie_title'])
+        result[i['movie_title']] = {'movie_title': i['movie_title'],
+                                    'director_name': i['director_name'],
+                                    'content_rating': i['content_rating'],
+                                    'duration': i['duration'],
+                                    'language': i['language'],
+                                    'country': i['country'],
+                                    'genres': i['genres'],
+                                    'imdb_score': i['imdb_score']}
+
+    return result
 
 
     return data
@@ -145,5 +133,27 @@ def get_actors():
         result[person] = {'actor_name': person, 'movie_count': movie_count}
 
     return result
+
+def get_movies_on_rating_range(low_range, high_range, year):
+    '''Get list of movies based on a range of ratings.'''
+
+    # Querying the movies
+    movies = db.movies.find({"imdb_score": {"$gte": float(low_range), "$lte": float(high_range)}, "title_year": int(year)})
+
+    result = {}
+
+    for i in movies:
+        result[i['movie_title']] = {'movie_title': i['movie_title'],
+                                    'director_name': i['director_name'],
+                                    'content_rating': i['content_rating'],
+                                    'duration': i['duration'],
+                                    'language': i['language'],
+                                    'country': i['country'],
+                                    'genres': i['genres'],
+                                    'imdb_score': i['imdb_score']}
+
+    return result
+
+    return movies
 
 
