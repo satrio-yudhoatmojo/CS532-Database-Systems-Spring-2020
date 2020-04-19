@@ -78,3 +78,27 @@ def get_movies_on_genres(genre, year):
 
     return movies
 
+def get_movies_on_year(year):
+    '''Get a list of movies on a specific year.'''
+
+    # Querying to database
+    movies = db.movies.find({'title_year': int(year)},
+                                {'_id': 0, 'movie_title': 1, 'director_name': 1, 'content_rating': 1, 'duration': 1,
+                                 'language': 1,
+                                 'country': 1, 'genres': 1, 'imdb_score': 1})
+    result = {}
+
+    for i in movies:
+        result[i['movie_title']] = {'movie_title': i['movie_title'],
+                                    'director_name': i['director_name'],
+                                    'content_rating': i['content_rating'],
+                                    'duration': i['duration'],
+                                    'language': i['language'],
+                                    'country': i['country'],
+                                    'genres': i['genres'],
+                                    'imdb_score': i['imdb_score']}
+
+    return result
+
+
+

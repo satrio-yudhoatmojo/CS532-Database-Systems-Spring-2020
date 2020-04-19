@@ -6,7 +6,15 @@
 <!-- mobile settings -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>DB-3 Query 1</title>
-<link rel="icon" href="assets/images/favicon.ico">
+<link rel="icon" href="../static/assets/images/favicon.ico">
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  padding: 6px!Important;
+  text-align:center;
+}
+</style>
 
 <!--Web font css-->
 <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900" rel="stylesheet" type="text/css"> -->
@@ -16,16 +24,16 @@
 <link href="https://fonts.googleapis.com/css?family=Aladin" rel="stylesheet"> 
 
 <!-- Bootstrap core CSS -->
-<link href="assets/css/bootstrap.css" rel="stylesheet">
+<link href="../static/assets/css/bootstrap.css" rel="stylesheet">
 
 <!-- Jquery core CSS -->
-<script src="assets/js/jquery.js"></script>
+<script src="../static/assets/js/jquery.js"></script>
 
 <!--Custom CSS-->
-<link href="assets/css/animate.min.css" rel="stylesheet">
-<link href="assets/css/master.css" rel="stylesheet">
-<script src="assets/js/wow.min.js"></script>
-<script src="assets/js/year-select.js"></script>
+<link href="../static/assets/css/animate.min.css" rel="stylesheet">
+<link href="../static/assets/css/master.css" rel="stylesheet">
+<script src="../static/assets/js/wow.min.js"></script>
+<script src="../static/assets/js/year-select.js"></script>
 <!--Icon font css-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
 
@@ -75,6 +83,50 @@
 			<div>
 				<div class="assignment-content">
 					<!-- Add your stuff for the Movies here -->
+                    <div align="center">
+                        <label for="years">Choose movie release year:</label>
+                        <form action="/movies_on_year" method="post">
+                            <select id="years" name="years">
+                                {% for year in years %}
+                                <option value="{{ year }}">{{ year }}</option>
+                                {% endfor %}
+                            </select>
+                            <input type="submit" value="Submit"/>
+                        </form>
+                    </div>
+
+                    {% if year %}
+                        <br />
+                        <h3 align="center">List of Movies in Year {{ year }}</h3>
+                        <br />
+                        <table style="width:100%">
+						  <tr>
+							<th style="text-align:center">No.</th>
+							<th style="text-align:center">Movie Title</th>
+							<th style="text-align:center">Director Name</th>
+                              <th style="text-align:center">Content Rating</th>
+                              <th style="text-align:center">Duration</th>
+                              <th style="text-align:center">Language</th>
+                              <th style="text-align:center">Country</th>
+                              <th style="text-align:center">Genres</th>
+                              <th style="text-align:center">IMDB Score</th>
+						  </tr>
+                            {% for k, v in data.items() %}
+						  <tr>
+							<td>{{ loop.index}}</td>
+							<td>{{ v['movie_title'] }}</td>
+							<td>{{ v['director_name'] }}</td>
+                              <td>{{ v['content_rating'] }}</td>
+                              <td>{{ v['duration'] }}</td>
+                              <td>{{ v['language'] }}</td>
+                              <td>{{ v['country'] }}</td>
+                              <td>{{ v['genres'] }}</td>
+                              <td>{{ v['imdb_score'] }}</td>
+						  </tr>
+                        {% endfor %}
+						</table>
+                    {% endif %}
+
 				</div>
 			</div>	
 		</div>
