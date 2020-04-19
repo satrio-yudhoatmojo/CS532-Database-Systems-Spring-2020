@@ -54,60 +54,25 @@ def show_movies_on_year():
         # Send the list of years to query1.html
         return render_template("query1.html", years=years)
 
-
-@app.route('/actors')
-def show_actors():
-    '''Displays all actors in the dataset'''
-
-    # Query 'actor_1_name', 'actor_2_name', and 'actor_3_name' from movies collection
-    actors = mongo.db.movies.find({}, {'_id': 0, 'actor_1_name': 1, 'actor_2_name': 1, 'actor_3_name': 1})
-
-    actor = []
-
-    result = {}
-
-    for items in actors:
-        if items['actor_1_name'] not in actor:
-            actor.append(items['actor_1_name'])
-
-        if items['actor_2_name'] not in actor:
-            actor.append(items['actor_2_name'])
-
-        if items['actor_3_name'] not in actor:
-            actor.append(items['actor_3_name'])
-
-    actor.sort()
-
-    for person in actor:
-        # Count movies starred by the actor
-        movie_count = mongo.db.movies.find({'$or': [{'actor_1_name': person}, {'actor_2_name': person}, {'actor_3_name': person}]}, {'_id': 0, 'movie_title': 1}).count()
-
-        # Stores the count to result dictionary
-        result[person] = movie_count
-
-    return render_template("actors.html", actors=result)
-
 @app.route('/movies_on_genres', methods=['GET', 'POST'])
 def show_movies_on_genres():
     '''Get a list of movies based on certain genre.'''
+
+    # Query list of movies genres for user to pick
+    genres = utils.get_genre_list()
+
+    # Query list of movies years for user to pick
+    years = utils.get_year_list()
+
     if request.method == 'POST':
-        # Query list of movies genres for user to pick
-        genres = utils.get_genre_list()
 
-        # Query list of movies years for user to pick
-        years = utils.get_year_list()
-
+        # Get POST data
         year = request.form.get('years')
         genre = request.form.get('genres')
+        print(year)
+        print(genre)
 
-        substr = '^' + genre + '*'
-
-        movies = mongo.db.movies.find({'genres': {'$regex': substr}, 'title_year': year})
-        for i in movies:
-            print(i)
-
-        # data = utils.get_movies_on_genres(genre, year)
-        data = []
+        data = utils.get_movies_on_genres(genre, year)
 
         # Render the page
         return render_template("movies_on_genres.html", years=years, genres=genres, data=data)
@@ -117,17 +82,18 @@ def show_movies_on_genres():
         This is 'else' condition is for base case condition.
         The first time user open the page and has not picked any genre.
         '''
-        # Query list of movies genres for user to pick
-        genres = utils.get_genre_list()
-
-        # Query list of movies years for user to pick
-        years = utils.get_year_list()
-
-        # Set data to None because we haven't retrieved any data yet
-        data = None
 
         # Render the page
-        return render_template("movies_on_genres.html", years=years, genres=genres, data=data)
+        return render_template("movies_on_genres.html", years=years, genres=genres)
+
+@app.route('/actors')
+def show_actors():
+    '''Displays all actors in the dataset'''
+
+    # Query list of actors and the number of movies they starred in
+    actors = utils.get_actors()
+
+    return render_template("query3.html", actors=actors)
 
 @app.route('/movies_revenues', methods=['GET', 'POST'])
 def show_movies_revenues():

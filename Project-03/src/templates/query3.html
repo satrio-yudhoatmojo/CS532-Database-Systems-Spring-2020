@@ -35,6 +35,12 @@
 .assignmets-section1 {
     padding: 40px 0 800px 0;
 }
+
+table, th, td {
+  border: 1px solid black;
+  padding: 6px!Important;
+  text-align:center;
+}
 </style>
 
 <body>
@@ -78,6 +84,22 @@
 			<div>
 				<div class="assignment-content">
 					<!-- Add your stuff for the Movies here -->
+                    <h3 align="center">List of Actors and The Number of Movies They Starred In</h3>
+                        <br />
+                        <table style="width:100%">
+						  <tr>
+							<th style="text-align:center">No.</th>
+							<th style="text-align:center">Actor Name</th>
+							<th style="text-align:center">Number of Movies</th>
+						  </tr>
+                            {% for k, v in actors.items() %}
+						  <tr>
+							<td>{{ loop.index}}</td>
+							<td>{{ v['actor_name'] }}</td>
+							<td>{{ v['movie_count'] }}</td>
+						  </tr>
+                        {% endfor %}
+						</table>
 				</div>
 			</div>	
 		</div>

@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 
-client = MongoClient('localhost', 27017)
+client = MongoClient()
 db = client.movies
 
 def get_year_list():
@@ -63,21 +63,6 @@ def get_movies_on_rating_range(low_range, high_range, year):
 
     return movies
 
-def get_movies_on_genres(genre, year):
-    '''Get list of movies based on a certain genre.'''
-
-    str = '^' + genre + '*'
-    print(str)
-    print(year)
-
-    # Querying the movies
-    movies = db.movies.find({'genres': {'$regex': str}, 'title_year': year})
-
-    for i in movies:
-        print(i['movie_title'])
-
-    return movies
-
 def get_movies_on_year(year):
     '''Get a list of movies on a specific year.'''
 
@@ -100,5 +85,51 @@ def get_movies_on_year(year):
 
     return result
 
+def get_movies_on_genres(genre, year):
+    '''Get list of movies based on a certain genre.'''
+
+    reg_exp = '^' + genre + '*'
+    print(reg_exp)
+
+    # Querying the movies
+    data = db.movies.find({'genres': {'$regex': reg_exp}, 'title_year': year}, {'_id': 0, 'movie_title': 1})
+
+    print(data)
+    for i in data:
+        print(i['movie_title'])
+
+
+    return data
+
+def get_actors():
+    # Query 'actor_1_name', 'actor_2_name', and 'actor_3_name' from movies collection
+    actors = db.movies.find({}, {'_id': 0, 'actor_1_name': 1, 'actor_2_name': 1, 'actor_3_name': 1})
+
+    actor = []
+
+    result = {}
+
+    for items in actors:
+        if items['actor_1_name'] not in actor:
+            actor.append(items['actor_1_name'])
+
+        if items['actor_2_name'] not in actor:
+            actor.append(items['actor_2_name'])
+
+        if items['actor_3_name'] not in actor:
+            actor.append(items['actor_3_name'])
+
+    actor.sort()
+
+    for person in actor:
+        # Count movies starred by the actor
+        movie_count = db.movies.find(
+            {'$or': [{'actor_1_name': person}, {'actor_2_name': person}, {'actor_3_name': person}]},
+            {'_id': 0, 'movie_title': 1}).count()
+
+        # Stores the count to result dictionary
+        result[person] = {'actor_name': person, 'movie_count': movie_count}
+
+    return result
 
 
