@@ -96,6 +96,40 @@ def show_actors():
 
     return render_template("query3.html", actors=actors)
 
+@app.route('/top_ten_movies', methods=['GET', 'POST'])
+def show_top_ten_movies():
+    '''Display top ten movies on certain year.'''
+
+    years = utils.get_year_list()
+
+    if request.method == 'POST':
+        # Get POST data
+        year = request.form.get('years')
+
+        data = utils.get_top_ten_movies_on_year(year)
+
+        # Preparing data for the chart
+        legend = "Top Movies in Year" + year
+        labels = data['movies']
+        values = data['imdb_scores']
+
+        # import data to pandas dataframe
+        #df = pd.DataFrame(data)
+        #print(df)
+
+        # Preparing the chart
+        #sns.set_context('paper')
+
+        # Create Plot
+        #sns.barplot(x='imdb_scores', y='movies', data=df)
+
+        #plt.figure().savefig("../img/top-ten.png")
+
+        return render_template("query4.html", year=year, years=years, legend=legend, labels=labels, values=values)
+    else:
+
+        return render_template("query4.html", years=years)
+
 # DONE
 @app.route('/movies_on_ratings', methods=['GET', 'POST'])
 def show_movies_on_ratings():
@@ -165,16 +199,7 @@ def show_movies_revenues():
 
         return render_template("movies_revenues.html", years=years)
 
-@app.route('/top_ten_movies', methods=['GET', 'POST'])
-def show_top_ten_movies():
-    '''Display top ten movies on certain year.'''
 
-    if request.method == 'POST':
-        pass
-    else:
-        years = utils.get_year_list()
-
-    return render_template("top_ten_movies.html", years=years)
 
 
 

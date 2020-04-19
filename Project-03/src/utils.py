@@ -134,6 +134,24 @@ def get_actors():
 
     return result
 
+def get_top_ten_movies_on_year(year):
+    '''Get a list of top ten highest rated movies on a certain year.'''
+
+    data = db.movies.find({"title_year": int(year)}).sort("imdb_score", -1).limit(10)
+
+    movies = []
+    imdb_scores = []
+    result = {}
+
+    for i in data:
+        movies.append(i['movie_title'])
+        imdb_scores.append(i['imdb_score'])
+
+    result['movies'] = movies
+    result['imdb_scores'] = imdb_scores
+
+    return result
+
 def get_movies_on_rating_range(low_range, high_range, year):
     '''Get list of movies based on a range of ratings.'''
 

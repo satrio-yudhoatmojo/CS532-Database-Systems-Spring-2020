@@ -22,8 +22,10 @@
 <script src="../static/assets/js/jquery.js"></script>
 
 <!--Custom CSS-->
+<link href="../static/assets/css/Chart.min.css" rel="stylesheet">
 <link href="../static/assets/css/animate.min.css" rel="stylesheet">
 <link href="../static/assets/css/master.css" rel="stylesheet">
+<script src="../static/assets/js/Chart.min.js"></script>
 <script src="../static/assets/js/wow.min.js"></script>
 <script src="../static/assets/js/year-select.js"></script>
 <!--Icon font css-->
@@ -78,6 +80,83 @@
 			<div>
 				<div class="assignment-content">
 					<!-- Add your stuff for the Movies here -->
+                    <div align="center">
+                        <label for="years">Choose movie release year:</label>
+                        <form action="/top_ten_movies" method="post">
+                            <select id="years" name="years">
+                                {% for year in years %}
+                                <option value="{{ year }}">{{ year }}</option>
+                                {% endfor %}
+                            </select>
+                            <input type="submit" value="Submit"/>
+                        </form>
+                    </div>
+                    {% if year %}
+                        <p>test {{ year }}</p>
+                        <canvas id="chart" width="400" height="300"></canvas>
+                        {% if year %}
+                            <script>
+                                var chart = document.getElementById("chart");
+
+                                Chart.defaults.global.defaultFontFamily = "Lato";
+                                Chart.defaults.global.defaultFontSize = 18;
+
+                                var movieData = {
+                                    label: 'IMDB Score',
+                                    barPercentage: 0.9,
+                                    barThickness: 'flex',
+                                    maxBarThickness: 8,
+                                    minBarLength: 2,
+                                    data: [{% for score in values %} {{ score }}, {% endfor %}]
+                                };
+
+                                var barChart = new Chart(chart, {
+                                    type: 'horizontalBar',
+                                    data: {
+                                        labels: [{% for item in labels %} "{{ item }}", {% endfor %}],
+                                        datasets: [movieData],
+                                    },
+                                    options: {
+                                        scales: {
+                                            xAxes: [{
+                                                ticks: {
+                                                    beginAtZero: true
+                                                }
+                                            }]
+                                        }
+                                    }
+                                });
+                            </script>
+                           {# <script>
+                                var barData = {
+                                    labels: [{% for item in labels %} "{{ item }}" {% endfor %}],
+                                    datasets:[{
+                                        fillColor: "rgba(151,187,205,0.2)",
+                                        strokeColor: "rgba(151,187,205,1)",
+                                        pointColor: "rgba(151,187,205,1)",
+                                        data: [{% for data in values %} "{{ data }}" {% endfor %}]
+                                    }]
+                                }
+
+                                var mychart = document.getElementById("chart").getContext("2d");
+
+                                steps = 10;
+                                max = 10;
+
+                                new Chart(mychart).Bar(barData, {
+                                    scaleOverride: true,
+                                    scaleSteps: steps,
+                                    scaleStepWidth: Math.ceil(max / steps),
+                                    scaleStartValue: 0,
+                                    scaleShowVerticalLines: true,
+                                    scaleShowGridLines : true,
+                                    barShowStroke : true,
+                                    scaleShowLabels: true
+                                });
+
+                            </script>#}
+                        {% endif %}
+                    {% endif %}
 				</div>
 			</div>	
 		</div>
