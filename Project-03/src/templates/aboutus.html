@@ -34,11 +34,10 @@
 </head>
 
 <style>
-table, th, td {
-  border: 1px solid black;
-  padding: 6px!Important;
-  text-align:center;
+.assignmets-section1 {
+    padding: 40px 0 80px 0;
 }
+
 </style>
 
 <body>
@@ -54,7 +53,7 @@ table, th, td {
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>	
-					<a class="navbar-brand" href="#">DB Portal</a>
+					<a class="navbar-brand" href="index.html">DB Portal</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
@@ -66,82 +65,49 @@ table, th, td {
 			</div>	
 		</nav>
 	</header>
-
-<!-- Intro section -->
-	<section class="welcome-section text-center">
+	
+	<!-- assignments-section -->
+	<section class="assignmets-section1" id="assignments">
 		<div class="container">
-			<div class="welcome-text">
-				<h2 class="wow flip" data-wow-duration="1000ms" data-wow-delay="300ms">CS532 - Database Systems<br/>IMDB Data Analysis</h2>
-			</div>
-		</div>
-	</section>
-
-<!-- assignments-section -->
-	<section class="assignmets-section" id="assignments">
-		<div class="container">
-			<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1000ms" data-wow-delay="500ms">Project 3</h2>
-			<p class="section-intro text-center wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">This section consists the links to the individual page of queries included in Project 3</p>
+			<h2 class="section-heading text-center wow fadeIn" data-wow-duration="1000ms" data-wow-delay="500ms">About Us</h2>
+			<p class="section-intro text-center wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">This section consists the information of developers of the Project.</p>
 			<div class="row">
-				<div class="wow bounceInRight" data-wow-duration="1000ms" data-wow-delay="700ms">
-					<div class="assignment-content wow fadeIn" data-wow-duration="1000ms" data-wow-delay="500ms">
-						<table style="width:100%">
-						  <tr>
-							<th style="text-align:center">Sr. No.</th>
-							<th style="text-align:center">Query</th>
-							<th style="text-align:center">Links</th> 
-						  </tr>
-						  <tr>
-							<td>1</td>
-							<td>List of movies yearly</td>
-							<td><a href="query1.html">View</a></td>
-						  </tr>
-						   <tr>
-							<td>2</td>
-							<td>List of movies based on genre</td>
-							<td><a href="query2.html">View</a></td>
-						  </tr>
-						   <tr>
-							<td>3</td>
-							<td>List of actors and the number of movies starred by the actor</td>
-							<td><a href="query3.html">View</a></td>
-						  </tr>
-						   <tr>
-							<td>4</td>
-							<td>Visualizing the top 10 movie genre on each year</td>
-							<td><a href="query4.html">View</a></td>
-						  </tr>
-						   <tr>
-							<td>5</td>
-							<td>Correlation analysis between movie rating and movie revenue</td>
-							<td><a href="query5.html">View</a></td>
-						  </tr>
-						   <tr>
-							<td>6</td>
-							<td>Number of profit-loss movie revenue in each year</td>
-							<td><a href="query6.html">View</a></td>
-						  </tr>
-						   <tr>
-							<td>7</td>
-							<td>Movies to watch based on ratings</td>
-							<td><a href="query7.html">View</a></td>
-						  </tr>
-						  <tr>
-							<td>8</td>
-							<td>Actor’s popularity on each movie</td>
-							<td><a href="query8.html">View</a></td>
-						  </tr>
-						  <tr>
-							<td>9</td>
-							<td>Relationship network analysis between actors</td>
-							<td><a href="query9.html">View</a></td>
-						  </tr>
-						</table>	
+				<div class="col-sm-6 wow bounceInLeft" data-wow-duration="1000ms" data-wow-delay="700ms">
+					<div class="text-outer" style="margin-left:255px;">
+						 <img src="../static/assets/images/rohan.jpg" alt="rohan_image" width="300" height="300"> 
 					</div>
-				</div>	
+				</div>
+				<div class="col-sm-6 wow bounceInRight" data-wow-duration="1000ms" data-wow-delay="700ms">
+					<div class="assignment-content wow fadeIn" data-wow-duration="1000ms" data-wow-delay="500ms">
+						<p>ROHAN RAVINDRA SARAF</p>
+							<ul>
+								<li>B00804752</li>
+								<li>rsaraf1@binghamton.edu</li>
+							</ul>	
+					</div>
+				</div>
+			</div>
+			<br/>
+			<div class="row">
+				<div class="col-sm-6 wow bounceInLeft" data-wow-duration="1000ms" data-wow-delay="700ms">
+					<div class="text-outer" style="margin-left:255px;">
+						 <img src="../static/assets/images/satrio.jpeg" alt="satrio_image" width="300" height="300"> 
+					</div>
+				</div>
+				<div class="col-sm-6 wow bounceInRight" data-wow-duration="1000ms" data-wow-delay="700ms">
+					<div class="assignment-content wow fadeIn" data-wow-duration="1000ms" data-wow-delay="500ms">
+						<p>SATRIO BASKORO YUDHOATMOJO</p>
+							<ul>
+								<li>B00818460</li>
+								<li>syudhoa1@binghamton.edu</li>
+							</ul>	
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
-
+	
+	
 <!--footer-->
 <footer class="main-footer text-center">
 	<div class="container">
@@ -160,5 +126,6 @@ table, th, td {
 		new WOW().init();
 	});
 </script>
+
+
 </body>
-</html>
