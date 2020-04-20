@@ -1,11 +1,6 @@
 from flask import Flask, render_template, request, send_file
 from flask_pymongo import PyMongo
 
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-import io
-
 import utils
 
 
@@ -15,8 +10,8 @@ mongo = PyMongo(app)
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello World, This is Me!'
+def index():
+    return render_template("index.html")
 
 @app.route('/movies')
 def show_movies():
@@ -96,6 +91,7 @@ def show_actors():
 
     return render_template("query3.html", actors=actors)
 
+# DONE
 @app.route('/top_ten_movies', methods=['GET', 'POST'])
 def show_top_ten_movies():
     '''Display top ten movies on certain year.'''
@@ -112,18 +108,6 @@ def show_top_ten_movies():
         legend = "Top Movies in Year" + year
         labels = data['movies']
         values = data['imdb_scores']
-
-        # import data to pandas dataframe
-        #df = pd.DataFrame(data)
-        #print(df)
-
-        # Preparing the chart
-        #sns.set_context('paper')
-
-        # Create Plot
-        #sns.barplot(x='imdb_scores', y='movies', data=df)
-
-        #plt.figure().savefig("../img/top-ten.png")
 
         return render_template("query4.html", year=year, years=years, legend=legend, labels=labels, values=values)
     else:
@@ -151,61 +135,47 @@ def show_movies_on_ratings():
 
         return render_template("query7.html", years=years)
 
-@app.route('/movies_revenues', methods=['GET', 'POST'])
+# TODO: Graph is not working
+@app.route('/movies_revenues')
 def show_movies_revenues():
     '''Displays yearly average budget and gross revenue of all movies.'''
 
+    # Querying the yearly average budget and gross revenue of all movies
+    data = utils.get_budget_vs_gross_movies()
+
+    labels = data['years']
+    avg_budget = data['avg_budget']
+    avg_gross = data['avg_gross']
+
+    return render_template("query6.html", labels=labels, avg_budget=avg_budget, avg_gross=avg_gross)
+
+@app.route('/movies_rating_vs_revenue', methods=['GET', 'POST'])
+def show_movies_rating_vs_revenue():
+    '''Display movies rating vs movies revenue on specific year.'''
+
+    years = utils.get_year_list()
+
     if request.method == 'POST':
+        # Get POST data
         year = request.form.get('years')
-        # Querying the yearly average budget and gross revenue of all movies
-        query = mongo.db.movies.aggregate([{"$match": {"title_year": year}},
-                                          {"$group": {"_id": "$movie_title",
-                                                      "avg_budget": {"$avg": "$budget"},
-                                                      "avg_gross": {"$avg": "$gross"}}}])
+        print(year)
 
-        movie = []
-        datatype = []
-        average = []
-        data = {}
+        data = utils.get_rating_vs_gross_movies(year)
 
-        for i in query:
-            movie.append(i['_id'])
-            movie.append(i['_id'])
-            datatype.append('budget')
-            datatype.append('gross')
-            average.append(i['avgBudget'])
-            average.append(i['avgGross'])
+        labels = data['movies']
+        imdb_score = data['imdb_score']
+        gross = data['gross']
 
-        data['movie'] = year
-        data['type'] = datatype
-        data['average'] = average
+        return render_template("query5.html", years=years, year=year, labels=labels, imdb_score=imdb_score, gross=gross)
 
-        # Pandas dataframe
-        df = pd.DataFrame(data)
 
-        # Making of the chart
-        sns.set(style="whitegrid")
-
-        # Create factorplot barchart
-        sns.factorplot(x="movie", y="average", hue="type", data=df, kind="bar")
-
-        bytes_image = io.BytesIO()
-        plt.savefig(bytes_image, format='png')
-        bytes_image.seek(0)
-
-        return send_file(bytes_image, attachment_filename='plot.png', mimetype='image/png')
     else:
-        years = utils.get_year_list()
+        return render_template('query5.html', years=years)
 
-        return render_template("movies_revenues.html", years=years)
+@app.route('/genres_timeline')
+def show_genres_timelline():
+    data = utils.get_genre_timeline()
 
-
-
-
-
-
-
-
-
+    return render_template("query8.html", data=data)
 if __name__ == '__main__':
     app.run()

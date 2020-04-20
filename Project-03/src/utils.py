@@ -152,6 +152,35 @@ def get_top_ten_movies_on_year(year):
 
     return result
 
+def get_budget_vs_gross_movies():
+    '''Get budget and gross revenue data of movies on specific year.'''
+
+    #data = db.movies.aggregate([{"$match": {"title_year": year}},
+    #                                     {"$group": {"_id": "$movie_title",
+    #                                                  "avg_budget": {"$avg": "$budget"},
+    #                                                  "avg_gross": {"$avg": "$gross"}}}])
+
+    #data = db.movies.aggregate([{"$group": {"_id": "$title_year", "min": {"$min": "$budget"}, "avg": {"$avg": "$budget"}, "max": {"$max": "$budget"}}}, {"$sort": {"_id": 1}}])
+
+    data = db.movies.aggregate([{"$group": {"_id": "$title_year", "avg_budget": {"$avg": "$budget"}, "avg_gross": {"$avg": "$gross"}}}, {"$sort": {"_id": 1}}])
+
+    years = []
+    avg_budget = []
+    avg_gross = []
+
+    result = {}
+
+    for i in data:
+        years.append(i['_id'])
+        avg_budget.append(i['avg_budget'])
+        avg_gross.append(i['avg_gross'])
+
+    result['years'] = years
+    result['avg_budget'] = avg_budget
+    result['avg_gross'] = avg_gross
+
+    return result
+
 def get_movies_on_rating_range(low_range, high_range, year):
     '''Get list of movies based on a range of ratings.'''
 
@@ -174,4 +203,45 @@ def get_movies_on_rating_range(low_range, high_range, year):
 
     return movies
 
+def get_rating_vs_gross_movies(year):
+    '''Get movie rating data and gross income data for all movies on specific year.'''
 
+    data = db.movies.find({'title_year': int(year)})
+
+    movies = []
+    imdb_score = []
+    gross = []
+
+    result = {}
+
+    for i in data:
+        movies.append(i['movie_title'])
+        imdb_score.append(i['imdb_score'])
+        gross.append(i['gross'])
+
+    result['movies'] = movies
+    result['imdb_score'] = imdb_score
+    result['gross'] = gross
+
+    return result
+
+def get_genre_timeline():
+    '''Get number of movies on each genre throughout the time.'''
+
+    # Get a list of movie genres
+    genres = get_genre_list()
+
+    result = {}
+
+    for genre in genres:
+        reg_ex = '^' + genre + '*'
+
+        data = db.movies.aggregate([{"$match": {"genres": {"$regex": reg_ex}}},{"$group": {"_id": "$title_year", "count": {"$sum": 1}}},{"$sort": {"_id": 1}}])
+
+        result[genre] = {}
+
+        for i in data:
+            result[genre][i['_id']] = i['count']
+
+    print(result)
+    return result
