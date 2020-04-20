@@ -13,6 +13,10 @@ mongo = PyMongo(app)
 def index():
     return render_template("index.html")
 
+@app.route('/aboutus')
+def aboutus():
+    return render_template("aboutus.html")
+
 @app.route('/movies')
 def show_movies():
     '''Displays all movies in the dataset.'''
