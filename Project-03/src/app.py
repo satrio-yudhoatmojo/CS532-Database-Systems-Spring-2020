@@ -176,6 +176,172 @@ def show_movies_rating_vs_revenue():
 def show_genres_timelline():
     data = utils.get_genre_timeline()
 
-    return render_template("query8.html", data=data)
+    years = utils.get_year_list()
+
+    action = []
+    adventure = []
+    thriller = []
+    fantasy = []
+    documentary = []
+    scifi = []
+    romance = []
+    animation = []
+    comedy = []
+    family = []
+    musical = []
+    mystery = []
+    western = []
+    drama = []
+    history = []
+    sport = []
+    crime = []
+    horror = []
+    war = []
+    biography = []
+    music = []
+    gameshow = []
+    realitytv = []
+    news = []
+    short = []
+    noir = []
+
+    for year in years:
+        if data['Action'].get(year):
+            action.append(data['Action'][year])
+        else:
+            action.append(0)
+
+        if data['Adventure'].get(year):
+            adventure.append(data['Adventure'][year])
+        else:
+            adventure.append(0)
+
+        if data['Thriller'].get(year):
+            thriller.append(data['Thriller'][year])
+        else:
+            thriller.append(0)
+
+        if data['Fantasy'].get(year):
+            fantasy.append(data['Fantasy'][year])
+        else:
+            fantasy.append(0)
+
+        if data['Documentary'].get(year):
+            documentary.append(data['Documentary'][year])
+        else:
+            documentary.append(0)
+
+        if data['Sci-Fi'].get(year):
+            scifi.append(data['Sci-Fi'][year])
+        else:
+            scifi.append(0)
+
+        if data['Romance'].get(year):
+            romance.append(data['Romance'][year])
+        else:
+            romance.append(0)
+
+        if data['Animation'].get(year):
+            animation.append(data['Animation'][year])
+        else:
+            animation.append(0)
+
+        if data['Comedy'].get(year):
+            comedy.append(data['Comedy'][year])
+        else:
+            comedy.append(0)
+
+        if data['Family'].get(year):
+            family.append(data['Family'][year])
+        else:
+            family.append(0)
+
+        if data['Musical'].get(year):
+            musical.append(data['Musical'][year])
+        else:
+            musical.append(0)
+
+        if data['Mystery'].get(year):
+            mystery.append(data['Mystery'][year])
+        else:
+            mystery.append(0)
+
+        if data['Western'].get(year):
+            western.append(data['Western'][year])
+        else:
+            western.append(0)
+
+        if data['Drama'].get(year):
+            drama.append(data['Drama'][year])
+        else:
+            drama.append(0)
+
+        if data['History'].get(year):
+            history.append(data['History'][year])
+        else:
+            history.append(0)
+
+        if data['Sport'].get(year):
+            sport.append(data['Sport'][year])
+        else:
+            sport.append(0)
+
+        if data['Crime'].get(year):
+            crime.append(data['Crime'][year])
+        else:
+            crime.append(0)
+
+        if data['Horror'].get(year):
+            horror.append(data['Horror'][year])
+        else:
+            horror.append(0)
+
+        if data['War'].get(year):
+            war.append(data['War'][year])
+        else:
+            war.append(0)
+
+        if data['Biography'].get(year):
+            biography.append(data['Biography'][year])
+        else:
+            biography.append(0)
+
+        if data['Music'].get(year):
+            music.append(data['Music'][year])
+        else:
+            music.append(0)
+
+        if data['Game-Show'].get(year):
+            gameshow.append(data['Game-Show'][year])
+        else:
+            gameshow.append(0)
+
+        if data['Reality-TV'].get(year):
+            realitytv.append(data['Reality-TV'][year])
+        else:
+            realitytv.append(0)
+
+        if data['News'].get(year):
+            news.append(data['News'][year])
+        else:
+            news.append(0)
+
+        if data['Short'].get(year):
+            short.append(data['Short'][year])
+        else:
+            short.append(0)
+
+        if data['Film-Noir'].get(year):
+            noir.append(data['Film-Noir'][year])
+        else:
+            noir.append(0)
+
+    return render_template("query8.html", years=years, action=action, adventure=adventure, thriller=thriller,
+                           fantasy=fantasy, documentary=documentary, scifi=scifi, romance=romance, animation=animation,
+                           comedy=comedy, family=family, musical=musical, mystery=mystery, western=western,
+                           drama=drama, history=history, sport=sport, crime=crime, horror=horror, war=war,
+                           biography=biography, music=music, gameshow=gameshow, realitytv=realitytv, news=news,
+                           short=short, noir=noir)
+
 if __name__ == '__main__':
     app.run()

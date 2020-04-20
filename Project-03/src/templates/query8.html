@@ -10,6 +10,235 @@
 			<div>
 				<div class="assignment-content">
 					<!-- Add your stuff for the Movies here -->
+                    <div id="container" style="width: 100%;" align="center">
+                        <canvas id="chart" width="800" height="400"></canvas>
+                        <script>
+                            var chart = document.getElementById("chart");
+
+                            var actionData = {
+                                label: "Action",
+                                data: [{% for act in action %} {{ act }}, {% endfor %}],
+                                borderColor: "pink",
+                                pointBackgroundColor: "red",
+                                fill: false
+                            };
+
+                            var adventureData = {
+                                label: "Adventure",
+                                data: [{% for adv in adventure %} {{ adv }}, {% endfor %}],
+                                borderColor: "lightblue",
+                                pointBackgroundColor: "blue",
+                                fill: false
+                            };
+
+                            var thrillerData = {
+                                label: "Thriller",
+                                data: [{% for thrill in thriller %} {{ thrill }}, {% endfor %}],
+                                borderColor: "lightblack",
+                                pointBackgroundColor: "black",
+                                fill: false
+                            };
+
+                            var fantasyData = {
+                                label: "Fantasy",
+                                data: [{% for fan in fantasy %} {{ fan }}, {% endfor %}],
+                                borderColor: "rgba(190, 144, 212,1)",
+                                pointBackgroundColor: "purple",
+                                fill: false
+                            };
+
+                            var documentaryData = {
+                                label: "Documentary",
+                                data: [{% for doc in documentary %} {{ doc }}, {% endfor %}],
+                                borderColor: "rgba(230, 160, 98)",
+                                pointBackgroundColor: "brown",
+                                fill: false
+                            };
+
+                            var scifiData = {
+                                label: "Sci-Fi",
+                                data: [{% for sci in scifi %} {{ sci }}, {% endfor %}],
+                                borderColor: "rgba(255, 213, 78)",
+                                pointBackgroundColor: "rgba(255, 215, 0)",
+                                fill: false
+                            };
+
+                            var romanceData = {
+                                label: "Romance",
+                                data: [{% for rom in romance %} {{ rom }}, {% endfor %}],
+                                borderColor: "rgba(255,126,78)",
+                                pointBackgroundColor: "rgba(255, 69, 0)",
+                                fill: false
+                            };
+
+                            var animationData = {
+                                label: "Animation",
+                                data: [{% for anime in animation %} {{ anime }}, {% endfor %}],
+                                borderColor: "rgba(255, 160, 122)",
+                                pointBackgroundColor: "rgba(255,76,4)",
+                                fill: false
+                            };
+
+                            var comedyData = {
+                                label: "Comedy",
+                                data: [{% for com in comedy %} {{ com }}, {% endfor %}],
+                                borderColor: "rgba(174,207,207)",
+                                pointBackgroundColor: "rgba(47, 79, 79)",
+                                fill: false
+                            };
+
+                            var familyData = {
+                                label: "Family",
+                                data: [{% for com in comedy %} {{ com }}, {% endfor %}],
+                                borderColor: "rgba(204,255,125)",
+                                pointBackgroundColor: "rgba(137,226,0)",
+                                fill: false
+                            };
+
+                            var musicalData = {
+                                label: "Musical",
+                                data: [{% for mus in musical %} {{ mus }}, {% endfor %}],
+                                borderColor: "rgba(219,137,137)",
+                                pointBackgroundColor: "rgba(205, 92, 92)",
+                                fill: false
+                            };
+
+                            var mysteryData = {
+                                label: "Mystery",
+                                data: [{% for mys in mystery %} {{ mys }}, {% endfor %}],
+                                borderColor: "rgba(255,89,255)",
+                                pointBackgroundColor: "rgba(246,0,246)",
+                                fill: false
+                            };
+
+                            var westernData = {
+                                label: "Western",
+                                data: [{% for west in western %} {{ west }}, {% endfor %}],
+                                borderColor: "rgba(229,195,163)",
+                                pointBackgroundColor: "rgba(184, 115, 51)",
+                                fill: false
+                            };
+
+                            var dramaData = {
+                                label: "Drama",
+                                data: [{% for dram in drama %} {{ dram }}, {% endfor %}],
+                                borderColor: "rgba(255,193,118)",
+                                pointBackgroundColor: "rgba(255, 140, 0)",
+                                fill: false
+                            };
+
+                            var historyData = {
+                                label: "History",
+                                data: [{% for his in history %} {{ his }}, {% endfor %}],
+                                borderColor: "rgba(138,240,237)",
+                                pointBackgroundColor: "rgba(21, 161, 157)",
+                                fill: false
+                            };
+
+                            var sportData = {
+                                label: "Sport",
+                                data: [{% for sp in sport %} {{ sp }}, {% endfor %}],
+                                borderColor: "rgba(223,235,104)",
+                                pointBackgroundColor: "rgba(148, 161, 21)",
+                                fill: false
+                            };
+
+                            var crimeData = {
+                                label: "Crime",
+                                data: [{% for cr in crime %} {{ cr }}, {% endfor %}],
+                                borderColor: "rgba(160,232,160)",
+                                pointBackgroundColor: "rgba(50,205,50)",
+                                fill: false
+                            };
+
+                            var horrorData = {
+                                label: "Horror",
+                                data: [{% for hr in horror %} {{ hr }}, {% endfor %}],
+                                borderColor: "rgba(255,100,100)",
+                                pointBackgroundColor: "rgba(139,0,0)",
+                                fill: false
+                            };
+
+                            var warData = {
+                                label: "War",
+                                data: [{% for wr in war %} {{ wr }}, {% endfor %}],
+                                borderColor: "rgba(183,206,144)",
+                                pointBackgroundColor: "rgba(85,107,47)",
+                                fill: false
+                            };
+
+                            var biographyData = {
+                                label: "Biography",
+                                data: [{% for bio in biography %} {{ bio }}, {% endfor %}],
+                                borderColor: "rgba(250,217,188)",
+                                pointBackgroundColor: "rgba(244,164,96)",
+                                fill: false
+                            };
+
+                            var musicData = {
+                                label: "Music",
+                                data: [{% for msc in music %} {{ msc }}, {% endfor %}],
+                                borderColor: "rgba(248,218,143)",
+                                pointBackgroundColor: "rgba(184,134,11)",
+                                fill: false
+                            };
+
+                            var gameshowData = {
+                                label: "Game-Show",
+                                data: [{% for gs in gameshow %} {{ gs }}, {% endfor %}],
+                                borderColor: "rgba(242,135,202)",
+                                pointBackgroundColor: "rgba(199,21,133)",
+                                fill: false
+                            };
+
+                            var realitytvData = {
+                                label: "Reality-TV",
+                                data: [{% for real in realitytv %} {{ real }}, {% endfor %}],
+                                borderColor: "rgba(180,210,180)",
+                                pointBackgroundColor: "rgba(143,188,143)",
+                                fill: false
+                            };
+
+                            var newsData = {
+                                label: "News",
+                                data: [{% for nw in news %} {{ nw }}, {% endfor %}],
+                                borderColor: "rgba(217,192,192)",
+                                pointBackgroundColor: "rgba(188,143,143)",
+                                fill: false
+                            };
+
+                            var shortData = {
+                                label: "Short",
+                                data: [{% for sh in short %} {{ sh }}, {% endfor %}],
+                                borderColor: "rgba(180,210,210)",
+                                pointBackgroundColor: "rgba(143,188,188)",
+                                fill: false
+                            };
+
+                            var noirData = {
+                                label: "Film-Noir",
+                                data: [{% for fn in noir %} {{ fn }}, {% endfor %}],
+                                borderColor: "rgba(139,192,192)",
+                                pointBackgroundColor: "rgba(6,11,11)",
+                                fill: false
+                            };
+
+                            var yearChart = {
+                                labels: [{% for year in years %} {{ year }}, {% endfor %}],
+                                datasets: [actionData, adventureData, thrillerData, fantasyData, documentaryData,
+                                scifiData, romanceData, animationData, comedyData, familyData, musicalData,
+                                mysteryData, westernData, dramaData, historyData, sportData, crimeData, horrorData,
+                                warData, biographyData, musicData, gameshowData, realitytvData, newsData, shortData,
+                                noirData]
+                            };
+
+                            var lineChart = new Chart(chart, {
+                                type: "line",
+                                data: yearChart
+                            });
+
+                        </script>
+                    </div>
 				</div>
 			</div>	
 		</div>
