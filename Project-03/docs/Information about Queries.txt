@@ -1,27 +1,27 @@
 Information about each and every query (What output we are gonna show):
 
 1. List of movies yearly: -> Basic Query
-List all movies for the year selected by the user in the tabular format.
+List all movies released on user selected year in the tabular format.
 
 --------------
 2. List of movies based on genre -> Basic Query
-List all the movies in a tabular format from the year selected by the user which matched the selected Genre
+List all movies released on user selected year with user selected genre in a tabular format.
 
 --------------
 3. List of actors and the number of movies starred by the actor -> Basic Query
-List all the names of actors and number of movies they have starred in as per current dataset
+List all the actor names and number of movies they have starred in as per current dataset.
 
 --------------
-4.Visualizing the top 10 movie genre on each year -> Sophisticated Query
-Visualizing with the help of Graph the Top 10 genre for the year selected by the User
+4.Visualizing the top 10 movies on specific year -> Sophisticated Query
+Visualizing the Top 10 movies on user selected year using bar chart.
 
 --------------
 5. Correlation analysis between movie rating and movie revenue -> Sophisticated Query
-Visualizing with help of Line and Bar graph the relation between the IMDB Score and Gross Income of the movie. This helps us to conclude some information about how much the movie has earned as compared to IMDB Score.
+Visualizing the relation between the IMDB Score and Gross Income of the movie using bar chart and line chart. This helps us to conclude some information about how much the movie has earned as compared to IMDB Score.
 
 --------------
 6. Number of profit-loss movie revenue in each year -> Sophisticated Query
-Visualizing with the help of the graph the relation between how much money was spent in making it and how much did it earned ?
+Visualizing the relation between how much money was spent in making it and how much did it earned using bar chart ?
 
 --------------
 7. Movies to watch based on ratings -> Basic Query
