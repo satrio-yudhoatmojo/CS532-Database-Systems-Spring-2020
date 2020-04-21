@@ -28,7 +28,7 @@ Visualizing the relation between how much money was spent in making it and how m
 Listing the Movies in a tabular format based on the range of IMDB Score selected by the user.
 
 --------------
-8. Increasing/Decresing Trend of Movie Genres for different Years
+8. Increasing/Decreasing Trend of Movie Genres for different Years
 Showing the trends of the particular movie genre in the particular years. This helps to conclude increasing or decreasing trend of a particular genre in the film Industry as the years pass by.
 
 --------------
