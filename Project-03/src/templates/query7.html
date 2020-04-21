@@ -4,8 +4,8 @@
 <!-- assignments-section -->
 <section class="assignmets-section1" id="assignments">
 	<div class="container">
-		<h2 class="section-heading text-center">Query 7</h2>
-		<p class="section-intro text-center">Desc for the Query 7</p>
+		<h2 class="section-heading text-center">Movies to watch based on ratings</h2>
+		<p class="section-intro text-center">Listing the Movies in a tabular format based on the range of IMDB Score selected by the user.</p>
 		<div class="row">
 			<div>
 				<div class="assignment-content">
@@ -19,16 +19,24 @@
                                 {% endfor %}
                             </select>
                             <br/>
-                            <label for="lower_bound">Lower bound rating:</label>
-                            <input type="range" name="lower_bound" id="lower_bound" value="0" min="0" max="10" step="0.1" oninput="lower_bound_disp.value = lower_bound.value">
-                            <output  id="lower_bound_disp"></output>
-
-                            &nbsp;
-
-                            <label for="upper_bound">Upper bound rating:</label>
-                            <input type="range" name="upper_bound" id="upper_bound" value="0" min="0" max="10" step="0.1" oninput="upper_bound_disp.value = upper_bound.value">
-                            <output  id="upper_bound_disp"></output>
-
+                            <br/>
+                            <div class="row">
+                                <div class="col-sm-2">
+                                </div>
+                                <div class="col-sm-4 text-center">
+                                     <label for="lower_bound">Lower bound rating:</label>
+                                    <input type="range" name="lower_bound" id="lower_bound" value="0" min="0" max="10" step="0.1" oninput="lower_bound_disp.value = lower_bound.value">
+                                     <output  id="lower_bound_disp"></output>
+                                </div>
+                                <div class="col-sm-4 text-center">
+                                    <label for="upper_bound">Upper bound rating:</label>
+                                    <input type="range" name="upper_bound" id="upper_bound" value="0" min="0" max="10" step="0.1" oninput="upper_bound_disp.value = upper_bound.value">
+                                    <output  id="upper_bound_disp"></output>
+                                </div>
+                                <div class="col-sm-2"></div>
+                            </div>
+                            <br/>
+                            <br/>
                             <input type="submit" value="Submit"/>
                         </form>
                     </div>
