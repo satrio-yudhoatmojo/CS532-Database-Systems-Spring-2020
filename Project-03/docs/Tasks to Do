@@ -1,0 +1,40 @@
+(Append the Word Done at last when the task is done, then push the file back to git)
+
+Satrio: 
+--------
+1. Change the href URL as per the Python framework for Home and Project on Homepage.
+   Currently --> URL not found error comes.
+
+2. Fix the href URL for Home, Project, About Us on the aboutus page
+   Currently it is broken.
+   
+3. Fix the href URL for Home in the layout.html page.
+   Currently it is broken.
+   
+4. Remove the Query 9 from the layout.html page
+ 
+5. If possible make the graph of the Query 4 Colourful.
+
+6. For the Query 5, add the sentence indicating that the result are shown for which year. 
+   For e.g. if 2020 is selected, then display sentence as "Correlation Analysis for the Year 2020"
+ 
+7. Title for all the 3 Axis on Query 5.
+
+8. Title for all the 3 Axis on Query 6.
+
+9. Title for all X and Y Axis on Query 8.
+
+10. If Possible try adding the selection of Alphabet and year for the Query 3.
+	Currently It takes around 1 minute and 36 seconds to load the page.
+
+Rohan:
+-------
+1. Thorough Testing.
+
+2. Replace the Query title and Query Desc on the individual Pages. - Done
+
+3. Work on the Slides Presentation.
+
+4. Work on the Report for the Project 3
+
+5. Work on the Youtube video with Satrio.
