@@ -11,7 +11,7 @@ Satrio:
 3. [V] Fix the href URL for Home in the layout.html page.
    Currently it is broken.
    
-4. [V] [Remove the Query 9 from the layout.html page
+4. [V] Remove the Query 9 from the layout.html page
  
 5. [V] If possible make the graph of the Query 4 Colourful.
 
@@ -29,7 +29,7 @@ Satrio:
 
 Rohan:
 -------
-1. Thorough Testing.
+1. Thorough Testing. - Done --> Everything seems to be working..!!
 
 2. Replace the Query title and Query Desc on the individual Pages. - Done
 
