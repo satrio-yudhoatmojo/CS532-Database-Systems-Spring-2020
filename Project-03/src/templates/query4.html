@@ -27,63 +27,53 @@
                             <script>
                                 var chart = document.getElementById("chart");
 
-                                Chart.defaults.global.defaultFontFamily = "Lato";
-                                Chart.defaults.global.defaultFontSize = 18;
-
                                 var movieData = {
                                     label: 'IMDB Score',
-                                    barPercentage: 0.9,
+                                    type: "bar",
+                                    backgroundColor: "lightgreen",
+                                    borderColor: "green",
+                                    borderWidth: 1,
                                     barThickness: 'flex',
-                                    maxBarThickness: 8,
-                                    minBarLength: 2,
                                     data: [{% for score in values %} {{ score }}, {% endfor %}]
                                 };
 
                                 var barChart = new Chart(chart, {
-                                    type: 'horizontalBar',
+                                    type: 'bar',
                                     data: {
                                         labels: [{% for item in labels %} "{{ item }}", {% endfor %}],
                                         datasets: [movieData],
                                     },
                                     options: {
+                                        responsive: true,
+                                        legends: { position: "top" },
+                                        title: {
+                                            display: true,
+                                            text: "Top 10 Movies in {{ year }} Based on IMDB Score",
+                                            fontSize: 18,
+                                                    fontStyle: "bold"
+                                        },
                                         scales: {
                                             xAxes: [{
-                                                ticks: {
-                                                    beginAtZero: true
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: "Movie Title",
+                                                    fontSize: 18,
+                                                    fontStyle: "bold"
                                                 }
+                                            }],
+                                            yAxes: [{
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: "IMDB Score",
+                                                    fontSize: 18,
+                                                    fontStyle: "bold"
+                                                },
+                                                ticks: { beginAtZero: true, min: 0, max: 10 }
                                             }]
                                         }
                                     }
                                 });
                             </script>
-                           {# <script>
-                                var barData = {
-                                    labels: [{% for item in labels %} "{{ item }}" {% endfor %}],
-                                    datasets:[{
-                                        fillColor: "rgba(151,187,205,0.2)",
-                                        strokeColor: "rgba(151,187,205,1)",
-                                        pointColor: "rgba(151,187,205,1)",
-                                        data: [{% for data in values %} "{{ data }}" {% endfor %}]
-                                    }]
-                                }
-
-                                var mychart = document.getElementById("chart").getContext("2d");
-
-                                steps = 10;
-                                max = 10;
-
-                                new Chart(mychart).Bar(barData, {
-                                    scaleOverride: true,
-                                    scaleSteps: steps,
-                                    scaleStepWidth: Math.ceil(max / steps),
-                                    scaleStartValue: 0,
-                                    scaleShowVerticalLines: true,
-                                    scaleShowGridLines : true,
-                                    barShowStroke : true,
-                                    scaleShowLabels: true
-                                });
-
-                            </script>#}
                         {% endif %}
                     {% endif %}
 				</div>

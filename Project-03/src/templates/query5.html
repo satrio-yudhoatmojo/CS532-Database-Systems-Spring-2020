@@ -27,9 +27,6 @@
                             <script>
                                 var chart = document.getElementById("chart");
 
-                                Chart.defaults.global.defaultFontFamily = "Lato";
-                                Chart.defaults.global.defaultFontSize = 18;
-
                                 var ratingData = {
                                     label: 'IMDB Score',
                                     type: "line",
@@ -37,6 +34,7 @@
                                     borderWidth: 2,
                                     pointBackgroundColor: "red",
                                     yAxisID: "y-axis-rating",
+                                    fill: false,
                                     data: [{% for score in imdb_score %} {{ score }}, {% endfor %}]
                                 };
 
@@ -51,6 +49,8 @@
                                     data: [{% for income in gross %} {{ income }}, {% endfor %}]
                                 };
 
+                                var fifty = 0.5;
+                                var min_value_gross = {{ gross | min }} * fifty;
 
                                 var barChart = new Chart(chart, {
                                     type: 'bar',
@@ -59,13 +59,40 @@
                                         datasets: [ratingData, grossData],
                                     },
                                     options: {
+                                        title: {
+                                            display: true,
+                                            text: "Correlation Analysis Between Movie Rating and Movie Revenue in Year {{ year }}",
+                                            fontSize: 18,
+                                            fontStyle: "bold"
+                                        },
                                         scales: {
+                                            xAxes: [{
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: "Movie Title",
+                                                    fontSize: 18,
+                                                    fontStyle: "bold"
+                                                }
+                                            }],
                                             yAxes: [{
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: "IMDB Score",
+                                                    fontSize: 18,
+                                                    fontStyle: "bold"
+                                                },
                                                 position: "right",
                                                 ticks: { beginAtZero: true, min: 0, max: 10 },
                                                 id: "y-axis-rating"
                                             }, {
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: "Gross Income",
+                                                    fontSize: 18,
+                                                    fontStyle: "bold"
+                                                },
                                                 position: "left",
+                                                ticks: { min: {{ gross | min }} },
                                                 id: "y-axis-gross"
                                             }]
                                         }

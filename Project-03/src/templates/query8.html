@@ -232,9 +232,37 @@
                                 noirData]
                             };
 
+                            var chartOptions = {
+                                title: {
+                                    display: true,
+                                    text: "Increasing/Decreasing Trend of Movie Genres for Different Years",
+                                    fontSize: 18,
+                                    fontStyle: "bold"
+                                },
+                                scales: {
+                                    xAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: "Year of Movie Release",
+                                            fontSize: 18,
+                                            fontStyle: "bold"
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: "Number of Movies",
+                                            fontSize: 18,
+                                            fontStyle: "bold"
+                                        }
+                                    }]
+                                }
+                            };
+
                             var lineChart = new Chart(chart, {
                                 type: "line",
-                                data: yearChart
+                                data: yearChart,
+                                options: chartOptions
                             });
 
                         </script>
