@@ -1,0 +1,48 @@
+.
+├── README.md
+├── dataset
+│   ├── movie_metadata.csv
+│   └── movie_metadata_cleaned.csv
+├── docs
+│   ├── Command\ to\ Import\ Dataset.txt
+│   ├── Information\ about\ Queries.txt
+│   ├── Proj3-Report-Template.docx
+│   └── Tasks\ to\ Do
+└── src
+    ├── app.py
+    ├── static
+    │   ├── assets
+    │   │   ├── css
+    │   │   │   ├── Chart.min.css
+    │   │   │   ├── animate.min.css
+    │   │   │   ├── bootstrap.css
+    │   │   │   └── master.css
+    │   │   ├── images
+    │   │   │   ├── favicon.ico
+    │   │   │   ├── rohan.jpg
+    │   │   │   ├── satrio.jpeg
+    │   │   │   └── slider-img.jpg
+    │   │   └── js
+    │   │       ├── Chart.min.js
+    │   │       ├── jquery.js
+    │   │       ├── wow.min.js
+    │   │       └── year-select.js
+    │   ├── script.js
+    │   └── style.css
+    ├── templates
+    │   ├── aboutus.html
+    │   ├── actors.html
+    │   ├── index.html
+    │   ├── layout.html
+    │   ├── query1.html
+    │   ├── query2.html
+    │   ├── query3.html
+    │   ├── query4.html
+    │   ├── query5.html
+    │   ├── query6.html
+    │   ├── query7.html
+    │   ├── query8.html
+    │   └── query9.html
+    └── utils.py
+
+9 directories, 36 files
