@@ -8,7 +8,7 @@ List all movies released on user selected year in the tabular format.
 List all movies released on user selected year with user selected genre in a tabular format.
 
 --------------
-3. List of actors and the number of movies starred by the actor -> Basic Query
+3. List of actors and the number of movies starred by that actor -> Basic Query
 List all the actor names and number of movies they have starred in as per current dataset.
 
 --------------
