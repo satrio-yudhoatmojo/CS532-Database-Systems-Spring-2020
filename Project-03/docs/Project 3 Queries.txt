@@ -1,1 +1,23 @@
 Queries:
+
+#1: db.movies.find({'title_year': int(year)},
+                                {'_id': 0, 'movie_title': 1, 'director_name': 1, 'content_rating': 1, 'duration': 1,
+                                 'language': 1,
+                                 'country': 1, 'genres': 1, 'imdb_score': 1})
+
+#2: db.movies.find({"genres": {"$regex": reg_exp}, "title_year": int(year)}).sort("movie_title")
+
+#3: db.movies.find({}, {'_id': 0, 'actor_1_name': 1, 'actor_2_name': 1, 'actor_3_name': 1})
+    db.movies.find(
+            {'$or': [{'actor_1_name': person}, {'actor_2_name': person}, {'actor_3_name': person}]},
+            {'_id': 0, 'movie_title': 1}).count()
+
+#4: db.movies.find({"title_year": int(year)}).sort("imdb_score", -1).limit(10)
+
+#5: db.movies.find({'title_year': int(year)})
+
+#6: db.movies.aggregate([{"$group": {"_id": "$title_year", "avg_budget": {"$avg": "$budget"}, "avg_gross": {"$avg": "$gross"}}}, {"$sort": {"_id": 1}}])
+
+#7: db.movies.find({"imdb_score": {"$gte": float(low_range), "$lte": float(high_range)}, "title_year": int(year)})
+
+#8: db.movies.aggregate([{"$match": {"genres": {"$regex": reg_ex}}},{"$group": {"_id": "$title_year", "count": {"$sum": 1}}},{"$sort": {"_id": 1}}])
