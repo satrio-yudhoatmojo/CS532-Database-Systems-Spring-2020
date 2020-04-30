@@ -1,0 +1,12 @@
+DBMS Project 3 Important links:
+
+Links to Slides:
+https://drive.google.com/file/d/1cMcnUi4TPCDmNj8cD4f9JtV04k0M9mz7/view?usp=sharing
+
+
+Link to Youtube Video:
+https://youtu.be/xNyx5_ZKYxY
+
+
+Github URL:
+https://github.com/satrio-yudhoatmojo/CS532-Database-Systems-Spring-2020.git
